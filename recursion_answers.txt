@@ -1,0 +1,44 @@
+1. Recursion is where a function calls itself and iteration uses loops to repeat a process. While they are very similar recursion tends to be slower and more subject to system limitations, however recursion is more intuitive.
+2.  Five algorithms that commonly implement recursion are the Fibonacci sequence, binary searches, factorials, finding the greatest common divisor, and reversing a string.
+3. It’s ideal to use recursion when the algorithm needs to branch out because the code can be written much more plainly in these cases. For example Sierpinski’s Triangle can be accomplished with a smaller amount of more understandable code with recursion than it can with iteration. It should however be avoided for problems that require the function to call itself many times. For example, creating a piece of code that would find how many leap years have occurred since the beginning of Earth. 
+4. For the factorial algorithm a recursive solution makes more sense than an iterative solution because of the way that all of the branched out data is necessary to the algorithm. The maximum algorithm works best as an iteration because it has to go through a lot of information that doesn’t need to be manipulated so it can be simply coded with loops. The Fibonacci sequence algorithm is a bit of a toss up because while the recursive solution is more straightforward, it tends to repeat calculations unnecessarily. 
+5.
+function numberOfItems(array, index){
+  index = index || 0;
+  if(array[index + 1]) {
+    return numberOfItems(array, index + 1);
+  }
+  else if (index === 0){
+    return 0
+  }
+  else {
+    return index + 1;
+  }
+}
+
+var array = ['cat', 'dog', 'bunny'];
+console.log(numberOfItems(array))
+6.
+function isPalindrome(string, stringBackwards, index){
+  index = index || 0;
+  stringBackwards = stringBackwards || "";
+  string = string.replace(/\s/g,''); 
+  string = string.toLowerCase();
+  
+  if (string.length >= index){
+    stringBackwards = stringBackwards + string.charAt(string.length - index);
+    index++;
+    return isPalindrome(string, stringBackwards, index);
+  }
+  else if(string == stringBackwards) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+console.log(isPalindrome('racecar'));
+console.log(isPalindrome('dog'));
+console.log(isPalindrome("Was it a car or a cat I saw"));
+7. This demonstrates recursion because the act of clicking on recursion is like the function calling itself. The base case in this case being when the user deciding to stop therefore ending the recursive function.
